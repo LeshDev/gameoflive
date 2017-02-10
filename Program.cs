@@ -35,22 +35,22 @@ class Program
     {
             getRandom getRandomGrid = new getRandom();
             bool end = false;
-        //Console.WriteLine("Aus technischen Gründen kann man bisher noch keine Values eingeben, um die größte des Feldes zu bestimmen. Deshalb wird dieser Part hiermit übersprungen");
-        //Console.ReadKey();
+            //Console.WriteLine("Aus technischen Gründen kann man bisher noch keine Values eingeben, um die größte des Feldes zu bestimmen. Deshalb wird dieser Part hiermit übersprungen");
+            //Console.ReadKey();
 
-        // Funktioniert - X
+            // Funktioniert - X
 
-        //Console.WriteLine("Gebe die gewünschte Breite für das Game of Life ein");
-        //breite = Convert.ToInt32(Console.ReadLine());
-        //Console.WriteLine("Gebe die gewünschte Höhe für das Game of Life ein");
-        //hoehe = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Gebe die gewünschte Breite für das Game of Life ein");
+            //breite = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Gebe die gewünschte Höhe für das Game of Life ein");
+            //hoehe = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Enter Gridsize:");
-        int gridSize = int.Parse(Console.ReadLine());
-        bool[,] grid = getRandomGrid(gridSize);
+            Console.WriteLine("Enter Gridsize:");
+            int gridSize = int.Parse(Console.ReadLine());
+            bool[,] grid = getRandomGrid(gridSize);
 
-        Console.WriteLine("You choosed this gridSize: " + gridSize + "\nYour Game of Life will start now ...");
-        Console.ReadKey();
+            Console.WriteLine("You choosed this gridSize: " + gridSize + "\nYour Game of Life will start now ...");
+            Console.ReadKey();
 
             //int[,] grid = new int[,]
             //{ 
@@ -63,7 +63,7 @@ class Program
             //    { 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
             //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
             //    { 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
-            //    //{ 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
+            //{ 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
             //{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
             //{ 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
             //{ 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
@@ -86,24 +86,23 @@ class Program
             //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0}
             //};
 
-            
-        ConsoleKeyInfo key = Console.ReadKey();
+
+            ConsoleKeyInfo key = Console.ReadKey();
         grid gameoflive = new grid();
 
         // GRID WIRD GELADEN
 
         while (!end)
         {
-            gameoflive.currentgrid(grid);
-        } }
-
-            
+            getRandomGrid.getRandomGrid();
+        }
+       }
     }
 }
 
 class getRandom
 {
-    public static void getRandomGrid()
+    public void getRandomGrid()
     {
         bool[,] grid = new bool[1, 2];
         int rowCount = grid.GetLength(0);
@@ -162,7 +161,7 @@ class grid
                 }
             }
         }
-        Thread.Sleep(500);
+        //Thread.Sleep(500);
 
         oldgrid = (int[,])newgrid.Clone();
         displaygrid(newgrid);
