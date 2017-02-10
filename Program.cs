@@ -75,6 +75,7 @@ namespace GameOfLife
                     {
                         grid[row, col] = (rand.NextDouble() > 0.5);
                         Console.WriteLine(grid[row, col]?"X":"O");
+                        Console.WriteLine();
                     }
                 }
                 return grid;
