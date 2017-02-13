@@ -16,50 +16,48 @@ namespace GameOfLife
      */
     class Program
     {
-        
-
         static void Main(string[] args)
         {
+                int[,] grid = new int[,]
+                {
+               // 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+                { 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 2, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1},  // 0
+                { 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},  // 1
+                { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},  // 2
+                { 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},  // 3
+                { 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},  // 4
+                { 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},  // 5
+                { 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},  // 6
+                { 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},  // 7
+                { 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},  // 8
+                { 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},  // 9
+                { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},  // 10
+                { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},  // 11
+                { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},  // 12
+                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0}   // 13
+                };
                 getRandom getRandomGrid = new getRandom();
                 bool end = false;
 
                 string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 Console.WriteLine("Welcome to GAME OF LIFE - Version " + version);
                 Console.WriteLine("Choose a Gridsize:");
-                int gridSize = int.Parse(Console.ReadLine());
-                bool[,] grid = getRandom.getRandomGrid(gridSize);
-                Console.WriteLine("You've choosed this Gridsize: " + gridSize + "\nYour Game of Life will start now ...");
+                //int gridSize = int.Parse(Console.ReadLine());
+                //bool[,] gridb = getRandom.getRandomGrid(gridSize);
+                Console.WriteLine("You've choosed this Gridsize:" +  /*gridSize +*/ "\nYour Game of Life will start now ...");
                 Console.ReadKey();
 
-                ConsoleKeyInfo key = Console.ReadKey();
-                grid2 gameoflive = new grid2();
+                grid2 gameoflive = new grid2(grid);
 
                 while (end == false)                                                        // Grid "sollte" geladen werdén
                 {
-                    getRandom.getRandomGrid(gridSize);
+                    gameoflive.currentgrid();
+                    /*getRandom.getRandomGrid(gridSize)*/
                 }
-
-            //int[,] gridpattern = new int[,]
-            //    {
-            //    { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-            //    { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-            //    { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
-            //    { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},
-            //    { 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-            //    { 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},
-            //    { 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-            //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
-            //    { 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
-            //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
-            //    { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-            //    { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-            //    { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
-            //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0}
-            //    };
         }
     }
 
-        class getRandom
+            class getRandom
         {
             public static bool[,] getRandomGrid(int size)                                   // Generate a custom grid, 
             {
@@ -81,177 +79,199 @@ namespace GameOfLife
                 return grid;
             }
         }
-
-        class colors
-        {
-            public void red()
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-        }
     
-        class grid2
-        {
-            int gen = 0;
-            int[,] oldgrid;                             // old Grid
-            int[,] newgrid;                             // new Grid   
-            public void currentgrid(int[,] grid)
+            class grid2
             {
-                newgrid = (int[,])grid.Clone();
+                int gen = 0;
+                int[,] oldgrid;                             // old Grid
+                int[,] newgrid;                             // new Grid
 
-                int rowCount = grid.GetLength(0);                                                   // Build Breite
-                int colCount = grid.GetLength(1);                                                   // Build die Höhe
-
-                for (int i = 0; i < rowCount; i++)
+                public grid2(int[,] grid)
                 {
-                    for(int j = 0; j < colCount; j++)
-                    {
-                        int checkzelle = zelle(i,j);                                                // Testing for cell
+                    oldgrid = grid;
+                }
 
-                        if(newgrid[i,j] == 1)
+                public static bool[,] getRandomGrid(int size)                                   // Generate a custom grid, 
+                {
+                    bool[,] grid = new bool[size, size];
+                    int rowCount = grid.GetLength(0);
+                    int colCount = grid.GetLength(1);
+
+                    Random rand = new Random();
+                    for (int row = 0; row < rowCount; row++)
+                    {
+                        for (int col = 0; col < colCount; col++)
                         {
-                            if (checkzelle == 2 || checkzelle == 3)
+                            grid[row, col] = (rand.NextDouble() > 0.5);
+                            //Console.WriteLine(grid[row, col]?"X":"O");
+                            Console.WriteLine();
+                        }
+                    }
+                    Console.WriteLine();
+                    return grid;
+                }
+                public void currentgrid()
+                    {
+                        newgrid = (int[,])oldgrid.Clone();
+
+                        int rowCount = oldgrid.GetLength(0);                                                    // Build Breite
+                        int colCount = oldgrid.GetLength(1);                                                    // Build die Höhe
+
+                        for (int i = 0; i < rowCount; i++)
+                        {
+                            for(int j = 0; j < colCount; j++)
                             {
-                                newgrid[i, j] = 1;
+                                int checkzelle = zelle(i,j);                                                    // Testing for cell
+
+                                if(oldgrid[i,j] == 1)                                                           // Tests if there is an 1 at the current positon
+                                {
+                                    if(checkzelle <= 1)                                                         // 1 or Less Cells
+                                    {
+                                        newgrid[i, j] = 0;
+                                    }
+                                    else if (checkzelle == 2 || checkzelle == 3)                                // 2 or 3 Cells
+                                    {
+                                        newgrid[i, j] = 1;
+                                    }
+                                    else                                                                        // More then 3 Cells
+                                    {
+                                        newgrid[i, j] = 0;
+                                    }
+                                }
+                                else                                                                            // Tests if there is a 0 at the current position
+                                {
+                                    if (checkzelle == 3)
+                                    {
+                                        newgrid[i, j] = 1;
+                                    }
+                                    else
+                                    {
+                                        newgrid[i, j] = 0;
+                                    }
+                                }
                             }
-                            else
+                        }
+                        //Thread.Sleep(300);
+
+                        oldgrid = (int[,])newgrid.Clone();
+                        displaygrid(newgrid);
+                        //currentgrid(oldgrid);
+                    }
+
+
+                    private void displaygrid(int[,] grid)                                                       // Output for the Grid
+                    {
+                        int hoehe = grid.GetLength(0);
+                        int breite = grid.GetLength(1);
+
+                        for (int i = 0; i < hoehe; i++)
+                        {
+                            for(int j = 0; j < breite; j++)
                             {
-                                newgrid[i, j] = 0;
+                                //Console.ForegroundColor = ConsoleColor.Blue;
+                                Console.Write("{0,2}", grid[i,j]);                                              // Writes the Game of Life 
+                                //Console.ResetColor();
+                            }
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine("     ----------------------------------------");
+                        Thread.Sleep(400);
+                        Console.Clear();                                                                        // Generate a new generation
+                        gen++;
+                        Console.WriteLine();
+                        Console.WriteLine("     -- Next Generation - Load Grid Nr: " + gen + " --");
+                    }
+                    public int zelle(int x, int y)                          // Tests for nearby cells
+                    {
+                        int checkzelle = 0;
+
+                        if(x < 9 && y < 9)                  // Testet 1 RECHTS UNTEN
+                        {
+                            if(oldgrid[x + 1, y + 1] == 1)  // +1 x && +1 y 
+                            {
+                                checkzelle++;
+                            }
+                        }
+                        if (x > 0 && y > 0)                  // Testet 1 Oben LINKS
+                        {
+                            if (oldgrid[x - 1, y - 1] == 1)  // -1 x && y
+                            {
+                                checkzelle++;
+                            }
+                        }
+
+                        if (x < 9)                           // Testet 1 RECHTS
+                        {
+                            if(oldgrid[x + 1, y] == 1)      // +1 x
+                            {
+                                checkzelle++;
+                            }
+                        
+                        }
+                        if(x > 0)                           // Testet 1 LINKS
+                        {
+                            if(oldgrid[x - 1, y] == 1)
+                            {
+                                checkzelle++;               // -1 x
+                            }
+                        }
+                        if(y < 9)                           // Testet 1 unten
+                        {
+                            if(oldgrid[x, y + 1] == 1)      // +1 y
+                            {
+                                checkzelle++;
+                            }
+                        }
+                        if(y > 0)                           // Testet 1 Óben
+                        {
+                            if(oldgrid[x, y - 1] == 1)      // -1 y
+                            {
+                                checkzelle++;
+                            }
+                        }
+                        if(x < 9 && y > 0)                  // Testet 1 Oben RECHTS
+                        {
+                            if(oldgrid[x + 1, y - 1] == 1)  // +1 x && -1 y
+                            {
+                                checkzelle++;
+                            }
+                        }
+                        if(x > 0 && y < 9)                  // Testet 1 Unten LINKS
+                        {
+                            if(oldgrid[x - 1, y + 1] == 1)  // -1 x && +1 y
+                            {
+                                checkzelle++;
                             }
                         }
                         else
                         {
-                            if(checkzelle == 3)
+                            if (oldgrid[x, y] == 1)
                             {
-                                newgrid[i, j] = 1;
-                            }else
-                            {
-                                newgrid[i, j] = 0;
+                                checkzelle++;
                             }
                         }
-                    }
-                }
-                Thread.Sleep(500);
-
-                oldgrid = (int[,])newgrid.Clone();
-                displaygrid(newgrid);
-                currentgrid(oldgrid);
-            }
-            private void displaygrid(int[,] grid)                // Output for the Grid
-            {
-                int hoehe = newgrid.GetLength(0);
-                int breite = newgrid.GetLength(1);
-
-                for (int i = 0; i < hoehe; i++)
-                {
-                    for(int j = 0; j < breite; j++)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write("{0}", newgrid[i, j]);
-                        Console.ResetColor();
-                    }
-                    Console.WriteLine();
-                }
-                gen++;
-                Console.WriteLine();
-                Console.WriteLine("Next Generation - Load Grid Nr: " + gen);
-            }
-            public int zelle(int x, int y)                          // Code will change later - Not that nice right now
-            {
-                int checkzelle = 0;
-
-                if(x < 9 && y < 9)                  // Testet 1 RECHTS OBEN
-                {
-                    if(newgrid[x + 1, y + 1] == 1)  // +1 x && y 
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(x < 9)                           // Testet 1 RECHTS
-                {
-                    if(newgrid[x + 1, y] == 1)      // +1 x
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(x > 9)                           // Testet 1 LINKS
-                {
-                    if(newgrid[x - 1, y] == 1)
-                    {
-                        checkzelle++;               // -1 x
-                    }
-                }
-                if(y < 9)                           // Testet 1 OBEN
-                {
-                    if(newgrid[x, y + 1] == 1)      // +1 y
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(y > 9)                           // Testet 1 UNTEN
-                {
-                    if(newgrid[x, y - 1] == 1)      // -1 y
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(x > 0 && y > 0)                  // Testet 1 UNTEN LINKS
-                {
-                    if(newgrid[x - 1, y - 1] == 1)  // -1 x && y
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(x < 9 && y > 0)                  // Testet 1 UNTEN RECHTS
-                {
-                    if(newgrid[x + 1, y - 1] == 1)  // +1 x && -1 y
-                    {
-                        checkzelle++;
-                    }
-                }
-                if(x > 0 && y < 0)                  // Testet 1 OBEN LINKS
-                {
-                    if(newgrid[x - 1, y + 1] == 1)  // -1 x && +1 y
-                    {
-                        checkzelle++;
-                    }
-                }
+                        y = 0;
+                        x = 0;
                 return checkzelle;
-            }
-    }  // ENDE
+                    }
+        }  // ENDE
 }
 // Unused random things
 
-        //int[,] grid = new int[,]
-        //    {
-        //    { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-        //    { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-        //    { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
-        //    { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},
-        //    { 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-        //    { 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},
-        //    { 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
-        //    { 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
-        //    { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-        //    { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-        //    { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
-        //    { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},
-        //    { 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-        //    { 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},
-        //    { 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
-        //    { 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
-        //    { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-        //    { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-        //    { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
-        //    { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},
-        //    { 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-        //    { 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},
-        //    { 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
-        //    { 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
-        //    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0}
-        //    };
+                //int[,] grid = new int[,]
+                //{
+                //{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 2, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1},
+                //{ 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
+                //{ 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
+                //{ 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0},
+                //{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
+                //{ 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0},
+                //{ 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
+                //{ 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0},
+                //{ 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
+                //{ 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
+                //{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+                //{ 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
+                //{ 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1},
+                //{ 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0}
+                //};
